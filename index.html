@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumerta Converter</title>
+
+    <!-- Verifikasi Google Search Console -->
+    <meta name="google-site-verification" content="googleafbe06b79d883584" />
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #ffcc00; }
+            50% { text-shadow: 0 0 15px #ffcc00; }
+            100% { text-shadow: 0 0 5px #ffcc00; }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #141E30, #243B55);
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007bff, #00c3ff);
+            padding: 20px;
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .bitcoin-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+
+        .container {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(255, 75, 43, 0.5);
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 75, 43, 0.7);
+        }
+
+        .note {
+            font-size: 14px;
+            color: #ddd;
+            margin-top: 10px;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+            .button {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>Sumerta Converter</header>
+
+    <!-- Harga Bitcoin -->
+    <div class="bitcoin-container">
+        Harga Bitcoin (BTC): <span id="price">Loading...</span>
+    </div>
+
+    <div class="container">
+        <a href="https://m.youtube.com" class="button">Sumerta Tube</a>
+        <a href="https://en.loader.to/4/" class="button">Download ke MP3</a>
+        <p class="note">Salin link YouTube sebelum mengunduh</p>
+    </div>
+
+    <footer>
+        &copy; 2025 Sumerta Converter. All Rights Reserved.
+    </footer>
+
+    <script>
+        async function getBitcoinPrice() {
+            const url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=idr";
+            
+            try {
+                const response = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error("Gagal mengambil data dari API");
+                }
+
+                const data = await response.json();
+                const price = data.bitcoin.idr;
+                document.getElementById('price').innerText = "Rp " + price.toLocaleString();
+            } catch (error) {
+                document.getElementById('price').innerText = "Gagal memuat data";
+                console.error("Error fetching Bitcoin price:", error);
+            }
+        }
+
+        getBitcoinPrice();
+        setInterval(getBitcoinPrice, 10000);
+    </script>
+
+</body>
+</html>
