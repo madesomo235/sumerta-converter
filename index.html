@@ -60,6 +60,8 @@
       width: 100%;
       min-height: 50vh; /* Pastikan konten memiliki tinggi minimal */
       overflow-y: auto; /* Agar konten bisa digulirkan ke bawah */
+      position: relative;
+      z-index: 10; /* Pastikan konten ini di depan */
     }
 
     .button {
@@ -143,6 +145,7 @@
       const continueButton = document.getElementById('continueButton');
       const closeButton = document.getElementById('closeButton');
       
+      // Cek apakah konten file sudah ditampilkan
       if (fileContent.style.display === 'none' || fileContent.style.display === '') {
         // Tampilkan konten file
         fileContent.style.display = 'block';
@@ -158,6 +161,9 @@
           .catch(err => {
             document.getElementById('fileOutput').innerHTML = "Terjadi kesalahan saat memuat file.";
           });
+
+        // Fokuskan halaman pada konten yang baru dimuat
+        window.scrollTo(0, fileContent.offsetTop);
 
       } else {
         // Sembunyikan konten file
