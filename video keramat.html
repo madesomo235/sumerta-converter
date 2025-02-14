@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Pemutar - Keramat</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #141E30, #243B55);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007bff, #00c3ff);
+            padding: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 40px;
+            width: 80%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 75, 43, 0.7);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .video-container {
+                width: 90%;
+            }
+
+            .button {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>Video Keramat</header>
+
+    <div class="video-container">
+        <h2>Menonton Video Keramat</h2>
+        
+        <!-- Pemutar video -->
+        <video width="100%" controls>
+            <source src="path/to/your/video.mp4" type="video/mp4">
+            Browser Anda tidak mendukung pemutar video.
+        </video>
+
+        <a href="https://mega.nz/file/DVokkLKK#07GXAYuzeWP3erCPvmZSN2MXYqiWOHeR5sGDDWlhtSs" class="button">Tonton di Mega</a>
+    </div>
+
+    <footer>
+        &copy; 2025 Video Pemutar Keramat - Semua Hak Dilindungi
+    </footer>
+
+</body>
+</html>
