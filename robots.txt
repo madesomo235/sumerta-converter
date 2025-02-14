@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://madesomo235.github.io/sumerta-converter/sitemap.xml
