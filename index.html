@@ -178,5 +178,65 @@
     }
 </style>
 
+<style>
+    .player-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #f3f3f3;
+        padding: 10px;
+        border-radius: 10px;
+        width: 250px;
+        margin: auto;
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+    audio {
+        display: none;
+    }
+</style>
+
+<div class="player-container">
+    <button onclick="skip(-10)">⏪</button>
+    <button onclick="togglePlay()">▶️/⏸️</button>
+    <button onclick="skip(10)">⏩</button>
+</div>
+
+<audio id="audioPlayer" autoplay loop>
+    <source src="music/Be With You.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung pemutar audio.
+</audio>
+
+<script>
+    let player = document.getElementById('audioPlayer');
+
+    function togglePlay() {
+        if (player.paused) {
+            player.play();
+        } else {
+            player.pause();
+        }
+    }
+
+    function skip(seconds) {
+        player.currentTime += seconds;
+    }
+</script>
+    
 </body>
 </html>
