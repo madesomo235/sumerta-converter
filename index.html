@@ -152,8 +152,8 @@
         continueButton.style.display = 'none';  // Menyembunyikan tombol lanjutkan
         closeButton.style.display = 'inline-block';  // Menampilkan tombol tutup
 
-        // Membaca konten file kovert_video_youtube_dll.html
-        fetch('kovert_video_youtube_dll.html')
+        // Membaca konten file kovert_video_youtube_dll.html dari GitHub atau server
+        fetch('https://raw.githubusercontent.com/username/repository/branch/kovert_video_youtube_dll.html')
           .then(response => response.text())
           .then(data => {
             document.getElementById('fileOutput').innerHTML = data;
