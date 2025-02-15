@@ -102,6 +102,17 @@
             font-weight: bold;
             transition: background-color 0.5s ease-in-out;
         }
+
+        footer {
+            position: relative;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -125,17 +136,20 @@
         <p class="note">Salin link YouTube sebelum mengunduh</p>
     </div>
 
+    <!-- Pemutar Musik dipindahkan di atas tombol "Video Keramat" -->
+    <h2>Pemutar Musik</h2>
+    <audio controls>
+        <source src="Be%20With%20You.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
     <a href="https://mega.nz/file/DVokkLKK#07GXAYuzeWP3erCPvmZSN2MXYqiWOHeR5sGDDWlhtSs" 
        class="button" target="_blank">Video Keramat</a>
 
+    <!-- Footer ikut scroll dan tidak menghalangi tampilan bawah -->
     <footer>
-        <p>&copy; 2025 Sumerta. Semua hak dilindungi. <a href="#">Kebijakan Privasi</a></p>
+        <p>&copy; 2025 Sumerta. Semua hak dilindungi. <a href="#" style="color: #00c3ff;">Kebijakan Privasi</a></p>
     </footer>
-
-    <!-- Tempat Menampilkan Kode yang Bisa Ditambahkan -->
-    <div class="code-container">
-        <pre id="codeDisplay"></pre>
-    </div>
 
     <script>
         async function getBitcoinPrice() {
@@ -166,7 +180,6 @@
         getBitcoinPrice();
         setInterval(getBitcoinPrice, 10000);
 
-        // Fungsi Pencarian
         function searchText() {
             let searchValue = document.getElementById("searchInput").value.trim().toLowerCase();
             let bodyText = document.body.innerHTML;
@@ -176,20 +189,18 @@
                 return;
             }
 
-            // Hapus highlight sebelumnya
             clearHighlight();
 
             let regex = new RegExp(`(${searchValue})`, "gi");
             let newContent = bodyText.replace(regex, `<mark>$1</mark>`);
             document.body.innerHTML = newContent;
 
-            // Tambahkan kembali event listener setelah manipulasi innerHTML
             restoreSearchEvents();
         }
 
         function clearHighlight() {
             document.querySelectorAll("mark").forEach(el => {
-                el.outerHTML = el.innerHTML; // Menghapus tag <mark> tanpa menghapus teks
+                el.outerHTML = el.innerHTML;
             });
         }
 
@@ -197,12 +208,6 @@
             document.getElementById("searchInput").addEventListener("input", searchText);
         }
     </script>
-
-    <h2>Pemutar Musik</h2>
-    <audio controls>
-        <source src="Be%20With%20You.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung elemen audio.
-    </audio>
     
 </body>
 </html>
