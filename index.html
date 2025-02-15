@@ -240,7 +240,7 @@
     <span>Video Anggrek Boh Kedua</span>
 </a>
 
-<div class="video-header">
+    <div class="video-header" onclick="tampilkanVideo()">
     <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/somo2.jpg" alt="Video Legend">
     <h2>Video Legend</h2>
 </div>
@@ -269,17 +269,22 @@
         justify-content: center;
         gap: 15px;
         margin-bottom: 20px;
+        cursor: pointer;
     }
 
     .video-header img {
-        width: 80px; /* Ukuran gambar disesuaikan */
-        height: 80px;
+        width: 100px; /* Ukuran gambar diperbesar */
+        height: 100px;
         border-radius: 10px;
-        cursor: pointer;
     }
 
     .video-header img:hover {
         opacity: 0.8;
+    }
+
+    h2 {
+        font-size: 22px;
+        color: #333;
     }
 
     button {
@@ -309,8 +314,8 @@
     }
 
     iframe {
-        width: 560px; /* Ukuran default diperbesar */
-        height: 315px;
+        width: 640px; /* Ukuran default diperbesar */
+        height: 360px;
         border-radius: 5px;
     }
 
@@ -366,7 +371,7 @@
             videoFrame.style.height = "270px";
         }
     }
-</script>
+</script>    
     
 </body>
 </html>
