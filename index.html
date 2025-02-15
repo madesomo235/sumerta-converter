@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Momen2025 & Legend</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #1e1e1e;
+            color: white;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 15px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .red { background-color: #ff3b3b; }
+        .red:hover { background-color: #c70000; transform: scale(1.05); }
+
+        .green { background-color: #28a745; }
+        .green:hover { background-color: #1e7e34; transform: scale(1.05); }
+
+        .video-box {
+            display: none;
+            margin: 20px auto;
+            padding: 20px;
+            background: black;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: fit-content;
+            border-radius: 10px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .video-box.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        iframe {
+            width: 640px;
+            height: 360px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="text-align: center;">
+        <button class="button red" onclick="checkPassword()">Momen2025</button>
+    </div>
+
+    <div id="momenVideoContainer" class="video-box">
+        <iframe id="momenVideoFrame" src="" allowfullscreen></iframe>
+        <br>
+        <button class="button green" onclick="closeMomenVideo()">Tutup Video</button>
+    </div>
+
+    <div class="video-header" onclick="tampilkanLegendVideo()">
+        <h2 style="cursor: pointer;">Video Legend</h2>
+    </div>
+
+    <div id="legendVideoContainer" class="video-box">
+        <iframe id="legendVideoFrame" src="" allowfullscreen></iframe>
+        <br>
+        <button class="button green" onclick="closeLegendVideo()">Tutup Video</button>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var input = prompt("Masukkan nama:");
+            if (input === "moment 2025") {
+                var videoContainer = document.getElementById("momenVideoContainer");
+                var videoFrame = document.getElementById("momenVideoFrame");
+
+                videoFrame.src = "https://player.vimeo.com/video/1057002374?autoplay=1";
+                videoContainer.style.display = "block";
+                setTimeout(() => {
+                    videoContainer.classList.add("show");
+                }, 10);
+            } else {
+                alert("Nama salah, coba lagi!");
+            }
+        }
+
+        function closeMomenVideo() {
+            var videoContainer = document.getElementById("momenVideoContainer");
+            var videoFrame = document.getElementById("momenVideoFrame");
+
+            videoFrame.src = "";
+            videoContainer.classList.remove("show");
+            setTimeout(() => {
+                videoContainer.style.display = "none";
+            }, 300);
+        }
+
+        function tampilkanLegendVideo() {
+            var videoContainer = document.getElementById("legendVideoContainer");
+            var videoFrame = document.getElementById("legendVideoFrame");
+
+            videoFrame.src = "https://www.dailymotion.com/embed/video/k7M7zev4lYC8SjCsTym?autoplay=1&controls=1";
+            videoContainer.style.display = "block";
+            setTimeout(() => {
+                videoContainer.classList.add("show");
+            }, 10);
+        }
+
+        function closeLegendVideo() {
+            var videoContainer = document.getElementById("legendVideoContainer");
+            var videoFrame = document.getElementById("legendVideoFrame");
+
+            videoFrame.src = "";
+            videoContainer.classList.remove("show");
+            setTimeout(() => {
+                videoContainer.style.display = "none";
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
