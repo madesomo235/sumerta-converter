@@ -35,7 +35,6 @@
             display: inline-block;
             margin-top: 20px;
             box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-            animation: glow 2s infinite alternate;
         }
 
         .container {
@@ -70,38 +69,38 @@
             box-shadow: 0 6px 15px rgba(255, 75, 43, 0.7);
         }
 
-        .code-container {
-            width: 90%;
-            max-width: 500px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 10px;
+        .search-container {
             margin: 20px auto;
-            font-family: monospace;
-            text-align: left;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-height: 300px;
-            overflow-y: auto;
-            transition: max-height 0.3s ease-in-out;
+            padding: 10px;
         }
 
-        footer {
-            margin-top: 40px;
-            padding: 15px;
-            font-size: 14px;
-            background: rgba(0, 0, 0, 0.2);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        .search-container input {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
         }
 
-        footer a {
-            color: #007bff;
-            text-decoration: none;
+        .search-container button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #ff416c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .search-container button:hover {
+            background: #ff4b2b;
+        }
+
+        mark {
+            background-color: yellow;
+            color: black;
+            font-weight: bold;
+            transition: background-color 0.5s ease-in-out;
         }
     </style>
 </head>
@@ -111,6 +110,13 @@
 
     <div class="bitcoin-container">
         Harga Bitcoin (BTC): <span id="price">Loading...</span>
+    </div>
+
+    <!-- Pencarian Lokal -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari dalam halaman...">
+        <button onclick="searchText()">Cari</button>
+        <button onclick="clearHighlight()">Hapus Sorotan</button>
     </div>
 
     <div class="container">
@@ -160,27 +166,43 @@
         getBitcoinPrice();
         setInterval(getBitcoinPrice, 10000);
 
-        // Fungsi untuk menambahkan kode secara manual
-        function addNewCode(newCode) {
-            let codeDisplay = document.getElementById('codeDisplay');
-            if (newCode.trim() !== '') {
-                codeDisplay.textContent += newCode + '\n';
-                adjustCodeContainer();
+        // Fungsi Pencarian
+        function searchText() {
+            let searchValue = document.getElementById("searchInput").value.trim().toLowerCase();
+            let bodyText = document.body.innerHTML;
+
+            if (searchValue === "") {
+                alert("Masukkan kata untuk mencari!");
+                return;
             }
+
+            // Hapus highlight sebelumnya
+            clearHighlight();
+
+            let regex = new RegExp(`(${searchValue})`, "gi");
+            let newContent = bodyText.replace(regex, `<mark>$1</mark>`);
+            document.body.innerHTML = newContent;
+
+            // Tambahkan kembali event listener setelah manipulasi innerHTML
+            restoreSearchEvents();
         }
 
-        // Fungsi menyesuaikan tinggi container otomatis
-        function adjustCodeContainer() {
-            let container = document.querySelector('.code-container');
-            container.style.maxHeight = container.scrollHeight + "px";
+        function clearHighlight() {
+            document.querySelectorAll("mark").forEach(el => {
+                el.outerHTML = el.innerHTML; // Menghapus tag <mark> tanpa menghapus teks
+            });
         }
 
+        function restoreSearchEvents() {
+            document.getElementById("searchInput").addEventListener("input", searchText);
+        }
     </script>
-<h2>Pemutar Musik</h2>
-<audio controls>
-    <source src="Be%20With%20You.mp3" type="audio/mpeg">
-    Browser Anda tidak mendukung elemen audio.
-</audio>
+
+    <h2>Pemutar Musik</h2>
+    <audio controls>
+        <source src="Be%20With%20You.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
     
 </body>
 </html>
