@@ -8,17 +8,6 @@
     <meta name="google-site-verification" content="googleafbe06b79d883584" />
 
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px #ffcc00; }
-            50% { text-shadow: 0 0 15px #ffcc00; }
-            100% { text-shadow: 0 0 5px #ffcc00; }
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(to right, #141E30, #243B55);
@@ -81,6 +70,23 @@
             box-shadow: 0 6px 15px rgba(255, 75, 43, 0.7);
         }
 
+        .code-container {
+            width: 90%;
+            max-width: 500px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 20px auto;
+            font-family: monospace;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease-in-out;
+        }
+
         footer {
             margin-top: 40px;
             padding: 15px;
@@ -97,56 +103,12 @@
         footer a:hover {
             text-decoration: underline;
         }
-
-        .player-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: #f3f3f3;
-            padding: 10px;
-            border-radius: 10px;
-            width: 250px;
-            margin: auto;
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        audio {
-            display: none;
-        }
-
-        /* Styling khusus untuk tombol Video Keramat */
-        .video-keramat {
-            width: 85%;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            margin: 20px auto;
-        }
     </style>
 </head>
 <body>
 
     <header>Sumerta Converter</header>
 
-    <!-- Harga Bitcoin -->
     <div class="bitcoin-container">
         Harga Bitcoin (BTC): <span id="price">Loading...</span>
     </div>
@@ -158,23 +120,16 @@
     </div>
 
     <a href="https://mega.nz/file/DVokkLKK#07GXAYuzeWP3erCPvmZSN2MXYqiWOHeR5sGDDWlhtSs" 
-       class="button video-keramat" target="_blank">Video Keramat</a>
+       class="button" target="_blank">Video Keramat</a>
 
     <footer>
         <p>&copy; 2025 Sumerta. Semua hak dilindungi. <a href="#">Kebijakan Privasi</a></p>
     </footer>
 
-    <!-- Pemutar Audio -->
-    <div class="player-container">
-        <button onclick="skip(-10)">⏪</button>
-        <button onclick="togglePlay()">▶️/⏸️</button>
-        <button onclick="skip(10)">⏩</button>
+    <!-- Tempat Menampilkan Kode yang Bisa Ditambahkan -->
+    <div class="code-container">
+        <pre id="codeDisplay"></pre>
     </div>
-
-    <audio id="audioPlayer" autoplay loop>
-        <source src="Be With You.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung pemutar audio.
-    </audio>
 
     <script>
         async function getBitcoinPrice() {
@@ -205,21 +160,22 @@
         getBitcoinPrice();
         setInterval(getBitcoinPrice, 10000);
 
-        let player = document.getElementById('audioPlayer');
-
-        function togglePlay() {
-            if (player.paused) {
-                player.play();
-            } else {
-                player.pause();
+        // Fungsi untuk menambahkan kode secara manual
+        function addNewCode(newCode) {
+            let codeDisplay = document.getElementById('codeDisplay');
+            if (newCode.trim() !== '') {
+                codeDisplay.textContent += newCode + '\n';
+                adjustCodeContainer();
             }
         }
 
-        function skip(seconds) {
-            player.currentTime += seconds;
+        // Fungsi menyesuaikan tinggi container otomatis
+        function adjustCodeContainer() {
+            let container = document.querySelector('.code-container');
+            container.style.maxHeight = container.scrollHeight + "px";
         }
-    </script>
 
+    </script>
 
 </body>
 </html>
