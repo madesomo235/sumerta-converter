@@ -239,7 +239,8 @@
     <img src="somo.jpg" alt="Video Anggrek Boh Kedua">
     <span>Video Anggrek Boh Kedua</span>
 </a>
-<div class="video-header" onclick="tampilkanVideo()">
+
+    <div class="video-header" onclick="tampilkanVideo()">
     <img src="https://madesomo235.github.io/sumerta-converter/somo2.jpg" alt="Video Legend">
     <h2>Video Legend</h2>
 </div>
@@ -247,7 +248,7 @@
 <button onclick="tampilkanVideo()">Tampilkan Video</button>
 
 <div id="videoContainer" class="video-box">
-    <iframe id="videoFrame" src="https://www.dailymotion.com/embed/video/k7M7zev4lYC8SjCsTym" frameborder="0" allowfullscreen></iframe>
+    <iframe id="videoFrame" src="https://www.dailymotion.com/embed/video/k7M7zev4lYC8SjCsTym?autoplay=0&controls=1&queue-enable=false" frameborder="0" allowfullscreen></iframe>
     <br>
     <button class="fullscreen-btn" onclick="ubahUkuran('besar')">Nonton Layar Penuh</button>
     <button class="smallscreen-btn" onclick="ubahUkuran('kecil')">Nonton Layar Kecil</button>
@@ -376,9 +377,12 @@
 <script>
     function tampilkanVideo() {
         let videoContainer = document.getElementById("videoContainer");
-        videoContainer.style.display = "block";
+        let videoFrame = document.getElementById("videoFrame");
 
-        // Efek transisi
+        // Atur ulang video agar tidak bisa skip ke video lain
+        videoFrame.src = "https://www.dailymotion.com/embed/video/k7M7zev4lYC8SjCsTym?autoplay=1&controls=1&queue-enable=false";
+        
+        videoContainer.style.display = "block";
         setTimeout(() => {
             videoContainer.classList.add("show");
         }, 10);
@@ -386,14 +390,14 @@
 
     function tutupVideo() {
         let videoContainer = document.getElementById("videoContainer");
-        
-        // Hilangkan transisi
-        videoContainer.classList.remove("show");
+        let videoFrame = document.getElementById("videoFrame");
 
-        // Matikan video saat ditutup
+        // Hentikan video saat ditutup
+        videoFrame.src = "";
+        
+        videoContainer.classList.remove("show");
         setTimeout(() => {
             videoContainer.style.display = "none";
-            document.getElementById("videoFrame").src = document.getElementById("videoFrame").src;
         }, 300);
     }
 
@@ -407,6 +411,8 @@
             videoFrame.style.height = "270px";
         }
     }
+</script>
+    
 </script>
 
 </script>    
