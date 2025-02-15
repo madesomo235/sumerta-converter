@@ -240,5 +240,133 @@
     <span>Video Anggrek Boh Kedua</span>
 </a>
 
+<div class="video-header">
+    <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/somo2.jpg" alt="Video Legend">
+    <h2>Video Legend</h2>
+</div>
+
+<button onclick="tampilkanVideo()">Tampilkan Video</button>
+
+<div id="videoContainer" class="video-box">
+    <iframe id="videoFrame" src="https://www.dailymotion.com/embed/video/k7M7zev4lYC8SjCsTym" frameborder="0" allowfullscreen></iframe>
+    <br>
+    <button class="fullscreen-btn" onclick="ubahUkuran('besar')">Nonton Layar Penuh</button>
+    <button class="smallscreen-btn" onclick="ubahUkuran('kecil')">Nonton Layar Kecil</button>
+    <button class="close-btn" onclick="tutupVideo()">Tutup</button>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+        background-color: #f4f4f4;
+    }
+
+    .video-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .video-header img {
+        width: 80px; /* Ukuran gambar disesuaikan */
+        height: 80px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .video-header img:hover {
+        opacity: 0.8;
+    }
+
+    button {
+        padding: 12px 18px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        transition: 0.3s;
+        margin: 5px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .video-box {
+        display: none;
+        margin: 20px auto;
+        padding: 20px;
+        background: black;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        width: fit-content;
+        border-radius: 10px;
+    }
+
+    iframe {
+        width: 560px; /* Ukuran default diperbesar */
+        height: 315px;
+        border-radius: 5px;
+    }
+
+    .fullscreen-btn {
+        background-color: #28a745;
+    }
+
+    .fullscreen-btn:hover {
+        background-color: #218838;
+    }
+
+    .smallscreen-btn {
+        background-color: #ffc107;
+    }
+
+    .smallscreen-btn:hover {
+        background-color: #e0a800;
+    }
+
+    .close-btn {
+        background-color: #dc3545;
+    }
+
+    .close-btn:hover {
+        background-color: #c82333;
+    }
+
+    @media (max-width: 600px) {
+        iframe {
+            width: 90%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+    }
+</style>
+
+<script>
+    function tampilkanVideo() {
+        document.getElementById("videoContainer").style.display = "block";
+    }
+
+    function tutupVideo() {
+        document.getElementById("videoContainer").style.display = "none";
+    }
+
+    function ubahUkuran(mode) {
+        var videoFrame = document.getElementById("videoFrame");
+        if (mode === "besar") {
+            videoFrame.style.width = "800px";
+            videoFrame.style.height = "450px";
+        } else {
+            videoFrame.style.width = "480px";
+            videoFrame.style.height = "270px";
+        }
+    }
+</script>
+    
 </body>
 </html>
