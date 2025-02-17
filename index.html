@@ -227,5 +227,43 @@
 
     <!-- Menyertakan file JavaScript dari GitHub -->
     <script src="https://raw.githubusercontent.com/username/repository/branch/somo.js"></script>
+
+    <html>
+<head>
+    <title>Garis Pembatas Animasi</title>
+    <style>
+        /* Gaya untuk garis pembatas */
+        .animated-line {
+            width: 100%;
+            height: 5px;
+            background-color: #3498db;
+            position: relative;
+            animation: slide 2s infinite alternate;
+        }
+
+        /* Animasi untuk garis pembatas */
+        @keyframes slide {
+            0% {
+                left: 0;
+                width: 100%;
+                background-color: #3498db;
+            }
+            50% {
+                left: 50%;
+                width: 50%;
+                background-color: #e74c3c;
+            }
+            100% {
+                left: 0;
+                width: 100%;
+                background-color: #2ecc71;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Garis Pembatas dengan Animasi</h1>
+    <div class="animated-line"></div>
+    <p>Ini adalah contoh garis pembatas dengan animasi yang bergerak dan berubah warna.</p>
 </body>
-</html>
+    </html>
