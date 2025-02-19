@@ -162,6 +162,29 @@
             box-shadow: 0 3px 8px rgba(255, 87, 51, 0.9);
             transform: scale(0.95);
         }
+
+        /* Animasi tombol berkedip */
+        @keyframes blink {
+            0% { background-color: red; }
+            50% { background-color: darkred; }
+            100% { background-color: red; }
+        }
+
+        /* Gaya tombol animasi */
+        .button {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            animation: blink 1s infinite;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -194,6 +217,9 @@
     <!-- Tombol YouTube -->
     <a href="https://m.youtube.com" class="btn youtube-btn">Link ke YouTube untuk Salin</a>
 
+    <!-- Tombol dengan animasi warna merah -->
+    <a href="https://madesomo235.github.io/leme-bangkaan/" class="button">Bangkaan Vol 1</a>
+
     <script>
         function searchWord() {
             const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -205,11 +231,6 @@
                 
                 if (foundMatches) {
                     alert(`Ditemukan ${foundMatches.length} hasil pencarian.`);
-                    
-                    // Menyorot semua kata yang ditemukan
-                    document.body.innerHTML = document.body.innerHTML.replace(regex, function(match) {
-                        return `<mark>${match}</mark>`;
-                    });
                 } else {
                     alert("Kata tidak ditemukan!");
                 }
@@ -217,21 +238,7 @@
                 alert("Masukkan kata yang ingin dicari.");
             }
         }
-
-        // Pendaftaran service worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js').then((registration) => {
-                    console.log('Service Worker terdaftar dengan sukses:', registration);
-                }).catch((error) => {
-                    console.log('Pendaftaran Service Worker gagal:', error);
-                });
-            });
-        }
     </script>
-
-    <!-- Menyertakan file JavaScript dari GitHub -->
-    <script src="https://raw.githubusercontent.com/madesomo235/sumerta-converter/Sumerta-konverter-20/somo.js"></script>
 
 </body>
 </html>
